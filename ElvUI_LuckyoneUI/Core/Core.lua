@@ -1,41 +1,56 @@
-local E, L, V, P, G = unpack(ElvUI)
-local MyPluginName = 'LuckyoneUI'
-local L1UI = E:GetModule('LuckyoneUI');
+local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
 local IsAddOnLoaded = IsAddOnLoaded
 local SetCVar = SetCVar
+
+--LuckyoneUI print
+function L1UI:Print(msg)
+	print('|cff4beb2cLuckyoneUI|r: '..msg)
+end
+
+function L1UI:AddonSetupAS(addon)
+
+	if IsAddOnLoaded('AddOnSkins') then
+		L1UI:GetASProfile()
+		L1UI:Print('AddOnSkins profile has been set.')
+	end
+
+end
 
 function L1UI:AddonSetupBW(addon)
 
 	if IsAddOnLoaded('BigWigs') then
 		L1UI:GetBigWigsProfile()
-		E:Print('BigWigs profile has been set.')
+		L1UI:Print('BigWigs profile has been set.')
 	end
 
-	PluginInstallStepComplete.message = 'BigWigs profile has been set.'
-	PluginInstallStepComplete:Show()
 end
 
 function L1UI:AddonSetupDT(addon)
 
 	if IsAddOnLoaded('Details') then
 		L1UI:GetDetailsProfile()
-		E:Print('Details profile has been set.')
+		L1UI:Print('Details profile has been set.')
 	end
 
-	PluginInstallStepComplete.message = 'Details profile has been set.'
-	PluginInstallStepComplete:Show()
+end
+
+function L1UI:AddonSetupOCD(addon)
+
+	if IsAddOnLoaded('OmniCD') then
+		L1UI:GetOmniCDProfile()
+		L1UI:Print('OmniCD profile has been set.')
+	end
+
 end
 
 function L1UI:AddonSetupPA(addon)
 
 	if IsAddOnLoaded('ProjectAzilroka') then
 		L1UI:GetPAProfile()
-		E:Print('ProjectAzilroka profile has been set.')
+		L1UI:Print('ProjectAzilroka profile has been set.')
 	end
 
-	PluginInstallStepComplete.message = 'ProjectAzilroka profile has been set.'
-	PluginInstallStepComplete:Show()
 end
 
 function L1UI:SetupCVars()
@@ -43,14 +58,10 @@ function L1UI:SetupCVars()
 	SetCVar('cameraDistanceMaxZoomFactor', 2.6)
 	SetCVar('ffxDeath', 0)
 	SetCVar('advancedCombatLogging', 1)
-	SetCVar('chatStyle', 'classic')
 	SetCVar('rawMouseEnable', 1)
 	SetCVar('SpellQueueWindow', 50)
 
-	--Chat print & Complete message
-	E:Print('CVars have been set.')
-	PluginInstallStepComplete.message = 'CVars have been set.'
-	PluginInstallStepComplete:Show()
+	L1UI:Print('CVars have been set.')
 end
 
 function L1UI:SetupPrivate()
@@ -79,10 +90,7 @@ function L1UI:SetupPrivate()
 
 	E:StaggeredUpdateAll(nil, true)
 
-	PluginInstallStepComplete.message = 'Fonts and Textures have been set.'
-	PluginInstallStepComplete:Show()
-
-	E:Print('Note: Fonts do not change until you restart WoW.')
+	L1UI:Print('Note: Fonts do not change until you restart WoW.')
 end
 
 function L1UI:NameplateReset()
@@ -105,5 +113,5 @@ function L1UI:NameplateReset()
 	SetCVar('UnitNameEnemyPlayerName', 1)
 	SetCVar('UnitNameEnemyTotem', 1)
 
-	E:Print('NamePlate CVars have been reset to default.')
+	L1UI:Print('NamePlate CVars have been reset to default.')
 end
