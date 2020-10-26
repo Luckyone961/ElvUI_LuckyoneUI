@@ -1,8 +1,8 @@
-## Interface: 80300
+## Interface: 90001
 ## Author: Luckyone
-## Version: 1.05
+## Version: 1.08
 ## Title: |cff1784d1ElvUI|r |cff4beb2cLuckyoneUI|r
-## Notes: Luckyone's ElvUI Layouts
+## Notes: Luckyone's ElvUI Edit
 ## RequiredDeps: ElvUI
 ## DefaultState: enabled
 

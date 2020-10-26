@@ -4,10 +4,12 @@ local sort = sort
 local pairs = pairs
 local tinsert = tinsert
 
+-- Author list
 local AUTHORS = {
 	'|cffFF7D0ALuckyone|r (EU) - LaughingSkull',
 }
 
+-- Coding list
 local CODING = {
 	'|cff0070DEAzilroka|r',
 	'|cffFF7D0AMerathilis|r',
@@ -15,6 +17,7 @@ local CODING = {
 	'|cFF8866ccSimpy|r',
 }
 
+-- Testers list
 local TESTERS = {
 	'|cffC41F3BKringel|r',
 	'|cff00FF96AltBridge|r',
@@ -23,12 +26,16 @@ local TESTERS = {
 	'|cffABD473Xyf|r',
 }
 
+-- Dono list
 local SUPPORT = {
 	'|cffe6cc80DaPaKnat|r',
 	'|cffe6cc80Fooseq|r',
 	'|cffe6cc80MonkeyHack|r',
+	'|cffe6cc80GUSTENFTW|r',
+	'|cffe6cc80Liam|r',
 }
 
+-- Sort
 local function SortList(a, b)
 	return E:StripString(a) < E:StripString(b)
 end
@@ -38,26 +45,31 @@ sort(CODING, SortList)
 sort(TESTERS, SortList)
 sort(SUPPORT, SortList)
 
+-- Author table
 for _, name in pairs(AUTHORS) do
 	tinsert(L1UI.CreditsList, name)
 end
 local AUTHORS_STRING = table.concat(AUTHORS, '|n')
 
+-- Coding table
 for _, name in pairs(CODING) do
 	tinsert(L1UI.CreditsList, name)
 end
 local CODING_STRING = table.concat(CODING, '|n')
 
+-- Testers table
 for _, name in pairs(TESTERS) do
 	tinsert(L1UI.CreditsList, name)
 end
 local TESTER_STRING = table.concat(TESTERS, '|n')
 
+-- Dono table
 for _, name in pairs(SUPPORT) do
 	tinsert(L1UI.CreditsList, name)
 end
 local SUPPORT_STRING = table.concat(SUPPORT, '|n')
 
+-- LuckyoneUI ingame options
 function L1UI:Configtable()
 
 	E.Options.args.L1UI = {
@@ -83,14 +95,14 @@ function L1UI:Configtable()
 						name = 'Installer',
 						args = {
 							install = {
-								order = 2,
+								order = 1,
 								type = 'execute',
 								name = 'Install',
 								desc = 'Run the installation process.',
 								func = function() E:GetModule('PluginInstaller'):Queue(L1UI.InstallerData); E:ToggleOptionsUI(); end,
 							},
 							chat = {
-								order = 3,
+								order = 2,
 								type = 'execute',
 								name = 'Setup Chat',
 								desc = 'Setup custom chat tabs Whisper, Guild, Party.',
@@ -100,13 +112,13 @@ function L1UI:Configtable()
 						},
 					},
 					defaults = {
-						order = 3,
+						order = 2,
 						type = 'group',
 						inline = true,
 						name = 'Defaults',
 						args = {
 							private = {
-								order = 4,
+								order = 1,
 								type = 'execute',
 								name = 'Reset Media',
 								desc = 'Reset Fonts, Textures, Skins to LuckyoneUI defaults.',
@@ -114,7 +126,7 @@ function L1UI:Configtable()
 								confirm = true,
 							},
 							cvars = {
-								order = 5,
+								order = 2,
 								type = 'execute',
 								name = 'Reset CVars',
 								desc = 'Reset CVars to LuckyoneUI defaults.',
@@ -122,7 +134,7 @@ function L1UI:Configtable()
 								confirm = true,
 							},
 							npreset = {
-								order = 6,
+								order = 3,
 								type = 'execute',
 								name = 'Reset Nameplate CVars',
 								desc = 'Reset Nameplate CVars to LuckyoneUI defaults.',
@@ -131,59 +143,117 @@ function L1UI:Configtable()
 							},
 						},
 					},
+					plugins = {
+						order = 3,
+						type = 'group',
+						inline = true,
+						name = 'Plugin Profiles',
+						args = {
+							addonskins = {
+								order = 1,
+								type = 'execute',
+								name = 'AddOnSkins',
+								desc = 'Reset to LuckyoneUI defaults.',
+								func = function() L1UI:AddonSetupAS(); end,
+								confirm = true,
+							},
+							projectazilroka = {
+								order = 2,
+								type = 'execute',
+								name = 'ProjectAzilroka',
+								desc = 'Reset to LuckyoneUI defaults.',
+								func = function() L1UI:AddonSetupPA(); end,
+								confirm = true,
+							},
+							sle = {
+								order = 3,
+								type = 'execute',
+								name = 'Shadow&Light',
+								desc = 'Reset to LuckyoneUI defaults.',
+								func = function() L1UI:AddonSetupSLE(); end,
+								confirm = true,
+							},
+						},
+					},
 					addons = {
-						order = 7,
+						order = 4,
 						type = 'group',
 						inline = true,
 						name = 'Addon Profiles',
 						args = {
-							addonskins = {
-								order = 8,
-								type = 'execute',
-								name = 'AddOnSkins',
-								desc = 'Reset to LuckyoneUI defaults.',
-								func = function() L1UI:AddonSetupAS(addon); end,
-								confirm = true,
-							},
 							bigwigs = {
-								order = 9,
+								order = 1,
 								type = 'execute',
 								name = 'BigWigs',
 								desc = 'Reset to LuckyoneUI defaults.',
-								func = function() L1UI:AddonSetupBW(addon); end,
+								func = function() L1UI:AddonSetupBW(); end,
 								confirm = true,
 							},
 							details = {
-								order = 10,
+								order = 2,
 								type = 'execute',
 								name = 'Details! Damage Meter',
 								desc = 'Reset to LuckyoneUI defaults.',
-								func = function() L1UI:AddonSetupDT(addon); end,
+								func = function() L1UI:AddonSetupDT(); end,
 								confirm = true,
 							},
 							omnicd = {
-								order = 11,
+								order = 3,
 								type = 'execute',
 								name = 'OmniCD Party CDs',
 								desc = 'Reset to LuckyoneUI defaults.',
-								func = function() L1UI:AddonSetupOCD(addon); end,
+								func = function() L1UI:AddonSetupOCD(); end,
 								confirm = true,
 							},
-							projectazilroka = {
-								order = 12,
-								type = 'execute',
-								name = 'ProjectAzilroka',
-								desc = 'Reset to LuckyoneUI defaults.',
-								func = function() L1UI:AddonSetupPA(addon); end,
-								confirm = true,
+						},
+					},
+					disabledFrames = {
+						order = 5,
+						type = 'group',
+						inline = true,
+						name = 'Disabled Blizzard Frames',
+						get = function(info) return E.private.L1UI.disabledFrames[info[#info]] end,
+						set = function(info, value) E.private.L1UI.disabledFrames[info[#info]] = value; E:StaticPopup_Show('PRIVATE_RL') end,
+						args = {
+							BossBanner = {
+								order = 1,
+								type = 'toggle',
+								name = 'Boss Banner',
+								desc = 'Hide Blizzards Boss Banner\n(Defeated Boss XY)',
+								get = function(info) return E.private.L1UI.disabledFrames.BossBanner end,
+								set = function(info, value) E.private.L1UI.disabledFrames.BossBanner = value; E:StaticPopup_Show('PRIVATE_RL') end,
+							},
+							LevelUpDisplay = {
+								order = 2,
+								type = 'toggle',
+								name = 'LevelUp Display',
+								desc = 'Hide Blizzards LevelUp Display\n(Reached level XY)',
+								get = function(info) return E.private.L1UI.disabledFrames.LevelUpDisplay end,
+								set = function(info, value) E.private.L1UI.disabledFrames.LevelUpDisplay = value; E:StaticPopup_Show('PRIVATE_RL') end,
+							},
+							ZoneTextFrame = {
+								order = 3,
+								type = 'toggle',
+								name = 'Zone Text',
+								desc = 'Hide the Zone Text\n(Entering Zone)',
+								get = function(info) return E.private.L1UI.disabledFrames.ZoneTextFrame end,
+								set = function(info, value) E.private.L1UI.disabledFrames.ZoneTextFrame = value; E:StaticPopup_Show('PRIVATE_RL') end,
+							},
+							AlertFrame = {
+								order = 4,
+								type = 'toggle',
+								name = 'Alert Frame',
+								desc = 'Hide the Loot / Alert Frame\n(Looted Items & Achievements)',
+								get = function(info) return E.private.L1UI.disabledFrames.AlertFrame end,
+								set = function(info, value) E.private.L1UI.disabledFrames.AlertFrame = value; E:StaticPopup_Show('PRIVATE_RL') end,
 							},
 						},
 					},
 				},
 			},
-			info = {
+			cvars = {
 				type = 'group',
-				name = 'Informations',
+				name = 'CVars',
 				order = 2,
 				args = {
 					cvardesc = {
@@ -295,7 +365,7 @@ function L1UI:Configtable()
 						order = 4,
 						type = 'group',
 						inline = true,
-						name = 'Supporter',
+						name = 'Supporters',
 						args = {
 							desc = {
 								order = 1,
