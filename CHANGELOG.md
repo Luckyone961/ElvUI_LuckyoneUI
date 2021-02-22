@@ -1,6 +1,127 @@
-### Version 1.09 [XX-XX-2020]
+### Version 1.20 [22-02-2021]
 **Changes:**  
+Fixed some issues with ActionBars 4, 5, 6  
+Removed LibGroupInSpecT-1.1  
+Removed ZenTracker WeakAuras  
+Auto Repair default is now back to PLAYER  
+Announce Interrupts default is now EMOTE  
 **New Additions:**  
+Interrupt tracking bars from OmniCD  
+**Misc:**  
+WeakAuras update  
+DBM Profile update  
+OmniCD Profile update  
+Plater Profile update  
+Details Profile update  
+___
+### Version 1.19 [11-02-2021]
+**Changes:**  
+Installer Steps reworked  
+• Added options for DBM and Plater  
+Updated Fonts for Anima Items in Bags  
+**New Additions:**  
+DBM Profile  
+Plater Profile  
+Tags  
+• luckyone:healermana:current  
+• luckyone:healermana:percent  
+**Misc:**  
+AddOns section renamed to Profiles  
+WeakAuras updates on wago  
+___
+### Version 1.18 [02-02-2021]
+**Changes:**  
+Health text format fixes for ElvUI 12.18  
+ActionBar fixes for ElvUI 12.18  
+• The update button will set the bars back to the known LuckyoneUI defaults  
+Updated Buffs for the Boss Frame  
+• Smaller icon size, 2 rows, 3 buffs per row  
+**Misc:**  
+Minor Arena Frame tweaks  
+Minor Chat Editbox tweaks  
+Auto Repair on Guild by default  
+Added config buttons for color themes  
+Updated BigWigs profile  
+___
+### Version 1.17 [27-12-2020]
+**Changes:**  
+Updated the Filter Priority for Buffs to show important Mythic+ Buffs (ElvUI 12.17)  
+**New Additions:**  
+Added options to quickly swap between vertical and block style RaidFrames  
+• Those options are for the DPS/TANK layout  
+Added options to choose which Buffs/Debuffs you want to see  
+• For Player, Target, Focus and NamePlates  
+Added custom Style Filters for all 8 Shadowlands Dungeons  
+• Important mobs will have a blue NamePlate like in my BfA filters  
+**Misc:**  
+Updated Credits  
+Added UnitFrames config section  
+___
+### Version 1.16 [14-12-2020]
+**Changes:**  
+Removed the health bar from mouseover tooltip  
+**New Additions:**  
+Added 2 chat commands to open the Weekly Reward Frame (Great Vault)  
+• /weekly  
+• /vault  
+**Misc:**  
+Updated BigWigs profile  
+Updated Details profile  
+Updated OmniCD profile  
+Updated Credits  
+___
+### Version 1.15 [05-12-2020]
+**Fixed the broken Layout installer step**
+___
+### Version 1.14 [05-12-2020]
+**Changes:**  
+Minor changes to some anchors/movers  
+• Extra Action Button, Zone Ability Button, Maw jailer frame  
+**Misc:**  
+Updated Credits  
+Updated OmniCD for version 2.5  
+___
+### Version 1.13 [23-11-2020]
+**Changes:**  
+Minor edits for TargetTarget and FocusTarget  
+**New Additions:**  
+Added a WeakAuras section in the options  
+• ClassAuras for all 12 classes  
+• General WeakAuras like !keys & interrupt tracker  
+• Note: Those are not 100% perfect, I will try to update them during the first tier  
+**Misc:**  
+Minor LibGroupInSpecT-1.1 fix  
+___
+### Version 1.12 [10-11-2020]
+**Changes:**  
+New options layout  
+**New Additions:**  
+Added LibGroupInSpecT-1.1  
+• You can delete the standalone Lib addon now  
+**Misc:**  
+Minor updates for both layouts  
+___
+### Version 1.11 [07-11-2020]
+**Changes:**  
+Hotfix for ElvUI 12.10  
+___
+### Version 1.10 [07-11-2020]
+**Changes:**  
+Fixes for ElvUI version 12.09  
+Updated the experience bar to show only completed quests  
+**New Additions:**  
+Added Update DPS/TANK and Update Healing buttons to the config  
+• You can now update your layout without re-running the installer  
+**Misc:**  
+SharedMedia update (Fonts, Statusbar textures)  
+Simpy made the SetupLayout function faster PogChamp  
+___
+### Version 1.09 [02-11-2020]
+**Changes:**  
+Adjustments for ElvUI 12.07 - make sure to update  
+**New Additions:**  
+New installer step: Theme  
+• Choose between Dark (Default) and Class colored UnitFrames  
 **Misc:**  
 ProjectAzilroka profile update  
 ___

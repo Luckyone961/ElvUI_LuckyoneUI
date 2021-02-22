@@ -35,12 +35,15 @@ L1UI.InstallerData = {
 			PluginInstallFrame.Option2:SetText('Healing')
 		end,
 		[3] = function()
-			PluginInstallFrame.SubTitle:SetFormattedText('NamePlates')
-			PluginInstallFrame.Desc1:SetText('Please click the button below to apply Luckyones NamePlate Style Filters.')
+			PluginInstallFrame.SubTitle:SetText('Color Theme')
+			PluginInstallFrame.Desc1:SetText('Please click a button below to set the UnitFrames Color Theme.\n\nFeel free to skip this step if you like the default color theme.')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cOptional|r')
 			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:SetupNamePlates() end)
-			PluginInstallFrame.Option1:SetText('Setup NamePlates')
+			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:SetupTheme('dark') end)
+			PluginInstallFrame.Option1:SetText('Dark')
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript('OnClick', function() L1UI:SetupTheme('class') end)
+			PluginInstallFrame.Option2:SetText('Class')
 		end,
 		[4] = function()
 			PluginInstallFrame.SubTitle:SetFormattedText('Chat')
@@ -52,21 +55,35 @@ L1UI.InstallerData = {
 		end,
 		[5] = function()
 			PluginInstallFrame.SubTitle:SetFormattedText('CVars')
-			PluginInstallFrame.Desc1:SetText('This will apply the following CVar values:\n\ncameraDistanceMaxZoomFactor 2.6\nadvancedCombatLogging 1\nSpellQueueWindow 50\nrawMouseEnable 1\nffxDeath 0')
+			PluginInstallFrame.Desc1:SetText('This will apply the following CVar values:\n\ncameraDistanceMaxZoomFactor 2.6\nadvancedCombatLogging 1\nrawMouseEnable 1\nffxDeath 0\nffxGlow 0')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cOptional|r')
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:SetupCVars() end)
 			PluginInstallFrame.Option1:SetText('Setup CVars')
 		end,
 		[6] = function()
-			PluginInstallFrame.SubTitle:SetFormattedText('BigWigs Profile')
-			PluginInstallFrame.Desc1:SetText('Please click the button below to apply Luckyones profile for BigWigs.')
+			PluginInstallFrame.SubTitle:SetFormattedText('NamePlates')
+			PluginInstallFrame.Desc1:SetText('Choose between ElvUI NamePlates and Plater NamePlates.')
+			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cHigh|r')
+			PluginInstallFrame.Option1:Show()
+			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:SetupNamePlates('ElvUI') end)
+			PluginInstallFrame.Option1:SetText('ElvUI')
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript('OnClick', function() L1UI:SetupNamePlates('Plater') end)
+			PluginInstallFrame.Option2:SetText('Plater')
+		end,
+		[7] = function()
+			PluginInstallFrame.SubTitle:SetFormattedText('BossMods')
+			PluginInstallFrame.Desc1:SetText('Choose between DBM and BigWigs.')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cOptional|r')
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:AddonSetupBW() end)
-			PluginInstallFrame.Option1:SetText('Setup BigWigs')
+			PluginInstallFrame.Option1:SetText('BigWigs')
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript('OnClick', function() L1UI:AddonSetupDBM() end)
+			PluginInstallFrame.Option2:SetText('DBM')
 		end,
-		[7] = function()
+		[8] = function()
 			PluginInstallFrame.SubTitle:SetFormattedText('Details Profile')
 			PluginInstallFrame.Desc1:SetText('Please click the button below to apply Luckyones profile for Details! Damage Meter.')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cOptional|r')
@@ -74,7 +91,7 @@ L1UI.InstallerData = {
 			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:AddonSetupDT() end)
 			PluginInstallFrame.Option1:SetText('Setup Details')
 		end,
-		[8] = function()
+		[9] = function()
 			PluginInstallFrame.SubTitle:SetFormattedText('OmniCD Profile')
 			PluginInstallFrame.Desc1:SetText('Please click the button below to apply Luckyones profile for OmniCD Party CDs.')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cOptional|r')
@@ -82,7 +99,12 @@ L1UI.InstallerData = {
 			PluginInstallFrame.Option1:SetScript('OnClick', function() L1UI:AddonSetupOCD() end)
 			PluginInstallFrame.Option1:SetText('Setup OmniCD')
 		end,
-		[9] = function()
+		[10] = function()
+			PluginInstallFrame.SubTitle:SetFormattedText('WeakAuras Information')
+			PluginInstallFrame.Desc1:SetText('You can find WeakAuras for all 12 Classes and some Utility WeakAuras in the LuckyoneUI config.')
+			PluginInstallFrame.Desc2:SetText('\nElvUI Options -> LuckyoneUI -> WeakAuras')
+		end,
+		[11] = function()
 			PluginInstallFrame.SubTitle:SetText('Installation Complete')
 			PluginInstallFrame.Desc1:SetText('You have completed the installation process, please click "Finished" to reload the UI.')
 			PluginInstallFrame.Desc2:SetText('Importance: |cff4beb2cHigh|r')
@@ -94,13 +116,15 @@ L1UI.InstallerData = {
 	StepTitles = {
 		[1] = 'Welcome',
 		[2] = 'Layouts',
-		[3] = 'NamePlates',
+		[3] = 'Color Theme',
 		[4] = 'Chat',
 		[5] = 'CVars',
-		[6] = 'BigWigs',
-		[7] = 'Details',
-		[8] = 'OmniCD',
-		[9] = 'Installation Complete',
+		[6] = 'NamePlates',
+		[7] = 'BossMods',
+		[8] = 'Details',
+		[9] = 'OmniCD',
+		[10] = 'WeakAuras',
+		[11] = 'Installation Complete',
 	},
 	StepTitlesColor = {1, 1, 1},
 	StepTitlesColorSelected = {0, 179/255, 1},

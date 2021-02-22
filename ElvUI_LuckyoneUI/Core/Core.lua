@@ -52,6 +52,15 @@ function L1UI:AddonSetupBW()
 	end
 end
 
+-- DBM Profile
+function L1UI:AddonSetupDBM()
+
+	if IsAddOnLoaded('DBM-Core') then
+		L1UI:GetDBMProfile()
+		L1UI:Print('DBM profile has been set.')
+	end
+end
+
 -- Details Profile
 function L1UI:AddonSetupDT()
 
@@ -67,6 +76,15 @@ function L1UI:AddonSetupOCD()
 	if IsAddOnLoaded('OmniCD') then
 		L1UI:GetOmniCDProfile()
 		L1UI:Print('OmniCD profile has been set.')
+	end
+end
+
+-- Plater Profile
+function L1UI:AddonSetupPlater()
+
+	if IsAddOnLoaded('Plater') then
+		L1UI:GetPlaterProfile()
+		L1UI:Print('Plater profile has been set.')
 	end
 end
 
@@ -97,14 +115,14 @@ function L1UI:SetupCVars()
 	SetCVar('advancedCombatLogging', 1)
 	SetCVar('cameraDistanceMaxZoomFactor', 2.6)
 	SetCVar('ffxDeath', 0)
+	SetCVar('ffxGlow', 0)
 	SetCVar('rawMouseEnable', 1)
-	SetCVar('SpellQueueWindow', 50)
 
 	L1UI:Print('CVars have been set.')
 end
 
 -- CVars NamePlates
-function L1UI:NameplateReset()
+function L1UI:NameplateCVars()
 
 	-- NamePlate CVars
 	SetCVar('nameplateLargerScale', 1)
@@ -132,17 +150,14 @@ function L1UI:SetupPrivate()
 
 	-- ElvUI Private DB
 	E.private["general"]["chatBubbleFont"] = "Expressway"
+	E.private["general"]["chatBubbleFontOutline"] = "OUTLINE"
 	E.private["general"]["dmgfont"] = "Expressway"
 	E.private["general"]["glossTex"] = "Solid"
 	E.private["general"]["namefont"] = "Expressway"
 	E.private["general"]["normTex"] = "Solid"
 	E.private["general"]["totemBar"] = false
-	E.private["install_complete"] = "11.52"
+	E.private["install_complete"] = "12.16"
 	E.private["skins"]["parchmentRemoverEnable"] = true
-
-	E:StaggeredUpdateAll(nil, true)
-
-	L1UI:Print('Note: Fonts do not change until you restart WoW.')
 end
 
 -- Global DB
