@@ -1,15 +1,15 @@
 local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
+local format = format
 local ReloadUI = ReloadUI
-local format = string.format
 
--- Set version & reload on "Skip" and "Finished"
+-- Set install version to current LuckyoneUI version
 local function InstallComplete()
 	E.private.L1UI.install_version = L1UI.Version
 	ReloadUI()
 end
 
--- Installer Steps
+-- Installer steps
 L1UI.InstallerData = {
 	Title = format('|cff4beb2c%s %s|r', L1UI.Name, 'Installation'),
 	Name = L1UI.Name,

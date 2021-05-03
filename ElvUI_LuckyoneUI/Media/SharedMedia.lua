@@ -1,4 +1,4 @@
-local LSM = LibStub("LibSharedMedia-3.0")
+local LSM = LibStub('LibSharedMedia-3.0')
 
 if LSM == nil then return end
 
@@ -12,6 +12,6 @@ LSM:Register('font','Meteora', [[Interface\AddOns\ElvUI_LuckyoneUI\Media\Fonts\M
 LSM:Register('font','Roboto Light', [[Interface\AddOns\ElvUI_LuckyoneUI\Media\Fonts\Roboto Light.ttf]])
 LSM:Register('font','Teko', [[Interface\AddOns\ElvUI_LuckyoneUI\Media\Fonts\Teko.ttf]])
 
--- Statusbar
+-- Statusbar Textures
 LSM:Register('statusbar','Atrocity', [[Interface\AddOns\ElvUI_LuckyoneUI\Media\Statusbar\Atrocity.tga]])
 LSM:Register('statusbar','Skullflower', [[Interface\AddOns\ElvUI_LuckyoneUI\Media\Statusbar\Skullflower.tga]])

@@ -3,18 +3,17 @@ local L1UI, E, L, V, P, G = unpack(select(2, ...))
 local pairs = pairs
 local SetCVar = SetCVar
 
--- NamePlate Setup
+-- NamePlate Setup for ElvUI and Plater (addon arg 'ElvUI' and 'Plater' available)
 function L1UI:SetupNamePlates(addon)
 
 	if addon == 'ElvUI' then
 
-		-- Toggle on
+		-- Make sure to enable ElvUI NamePlates
 		E.private["nameplates"]["enable"] = true
 
-		-- Style Filters & CVars
+		-- Setup custom StyleFilters
 		L1UI:SetupStyleFilters()
 
-		-- NamePlate DB
 		E.db["nameplates"]["colors"]["castbarDesaturate"] = false
 		E.db["nameplates"]["colors"]["castColor"]["g"] = 1
 		E.db["nameplates"]["colors"]["castColor"]["r"] = 0.023529411764706
@@ -36,7 +35,7 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["plateSize"]["friendlyWidth"] = 165
 		E.db["nameplates"]["plateSize"]["personalHeight"] = 40
 		E.db["nameplates"]["plateSize"]["personalWidth"] = 165
-		E.db["nameplates"]["statusbar"] = "Solid"
+		E.db["nameplates"]["statusbar"] = "Minimalist"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["buffs"]["countFont"] = "Expressway"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["buffs"]["countFontSize"] = 10
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["buffs"]["countPosition"] = "TOP"
@@ -73,7 +72,7 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["height"] = 18
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["font"] = "Expressway"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["fontSize"] = 12
-		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["format"] = "[luckyone:health:percent]"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["parent"] = "Health"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["position"] = "TOPRIGHT"
 		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["yOffset"] = -15
@@ -131,7 +130,7 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["height"] = 18
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["font"] = "Expressway"
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["fontSize"] = 12
-		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["format"] = "[luckyone:health:percent]"
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["parent"] = "Health"
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["position"] = "TOPRIGHT"
 		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["yOffset"] = -15
@@ -184,7 +183,7 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["eliteIcon"]["xOffset"] = 3
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["height"] = 12
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["text"]["font"] = "Expressway"
-		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["text"]["format"] = "[luckyone:health:percent]"
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["level"]["font"] = "Expressway"
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["level"]["format"] = "[level]"
 		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["level"]["xOffset"] = 3
@@ -232,7 +231,7 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["debuffs"]["yOffset"] = 1
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["height"] = 12
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["text"]["font"] = "Expressway"
-		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["text"]["format"] = "[luckyone:health:percent]"
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["level"]["font"] = "Expressway"
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["level"]["format"] = "[level]"
 		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["level"]["xOffset"] = 3
@@ -275,24 +274,24 @@ function L1UI:SetupNamePlates(addon)
 		E.db["nameplates"]["visibility"]["enemy"]["guardians"] = true
 		E.db["nameplates"]["visibility"]["enemy"]["minions"] = true
 
-		-- Set CVars
+		-- Set NamePlate CVars
 		L1UI:NameplateCVars()
 
 	elseif addon == 'Plater' then
 
-		-- Toggle off ElvUI Module
+		-- Make sure to disable ElvUI NamePlates if Plater is selected
 		E.private["nameplates"]["enable"] = false
 
-		-- Setup Plater Layout
+		-- Load Plater profile
 		L1UI:AddonSetupPlater()
 
-		-- Set CVars
+		-- Set NamePlate CVars
 		L1UI:NameplateCVars()
 
 	end
 end
 
--- Style Filter Setup
+-- Custom StyleFilters for all Shadowlands Dungeons
 function L1UI:SetupStyleFilters()
 
 	for _, filterName in pairs({'Luckyone_HOA', 'Luckyone_MISTS', 'Luckyone_PF', 'Luckyone_NW', 'Luckyone_TOP', 'Luckyone_SD', 'Luckyone_SOA', 'Luckyone_DOS'}) do
@@ -399,23 +398,8 @@ function L1UI:SetupStyleFilters()
 
 	E:StaggeredUpdateAll(nil, true)
 
-	-- NamePlate CVars
-	SetCVar('nameplateLargerScale', 1)
-	SetCVar('nameplateMinAlpha', 1)
-	SetCVar('nameplateMinScale', 1)
-	SetCVar('nameplateMotion', 1)
-	SetCVar('nameplateOccludedAlphaMult', 1)
-	SetCVar('nameplateOverlapH', 1)
-	SetCVar('nameplateOverlapV', 1.6)
-	SetCVar('nameplateSelectedScale', 1)
-	SetCVar('nameplateSelfAlpha', 1)
-
-	-- Name CVars
-	SetCVar('UnitNameEnemyGuardianName', 1)
-	SetCVar('UnitNameEnemyMinionName', 1)
-	SetCVar('UnitNameEnemyPetName', 1)
-	SetCVar('UnitNameEnemyPlayerName', 1)
-	SetCVar('UnitNameEnemyTotem', 1)
+	-- Set NamePlate CVars
+	L1UI:NameplateCVars()
 
 	L1UI:Print('NamePlate StyleFilters and CVars have been set.')
 end

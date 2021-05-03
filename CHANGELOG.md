@@ -1,3 +1,54 @@
+### Version 1.25 [ETA: 🍨]
+**Changes:**  
+Setup Chat will now enable chat class colors  
+**Misc:**  
+Shadow&Light profile update  
+Initial support for WoW Classic & TBC  
+Initial support for Healing WeakAuras  
+___
+### Version 1.24 [24-04-2021]
+**Hotfix:**  
+Layout Installer Hotfix (ProjectAzilroka related)  
+___
+### Version 1.23 [20-04-2021]
+**Changes:**  
+Absorb Style setup  
+Heal Prediction setup  
+Added font outline for DataTexts  
+No longer fade worldmap while moving  
+**New Additions:**  
+Config section "Tags"  
+Config section "Skins" (WIP)  
+Tag: luckyone:health:percent  
+• Displays health percentage with 0 decimals at full health  
+• 1 decimal below 100% health and 2 decimals below 10% health  
+**Misc:**  
+Updated Credits  
+Updated WeakAuras on Wago  
+• Mostly Paladin, Warlock, Shaman, DH, DK, Druid  
+___
+### Version 1.22 [12-04-2021]
+**Misc:**  
+WeakAura updates  
+DBM profile update  
+Plater profile update  
+OmniCD profile update  
+BigWigs profile update  
+___
+### Version 1.21 [09-03-2021]
+**Changes:**  
+Updates for ElvUI 12.21 & Patch 9.0.5  
+Set the default texture to Minimalist  
+Merged the Plugins config section into Profiles  
+Added LuckyoneUI version on top of the ElvUI config  
+Updated Target Marker Icon position, size and offset for all frames  
+**New Additions:**  
+Target Marker for Pet Frame  
+Added OmniCD Profile for the Healing layout  
+**Misc:**  
+ProjectAzilroka profile update  
+UI will now reload after profile updates  
+___
 ### Version 1.20 [22-02-2021]
 **Changes:**  
 Fixed some issues with ActionBars 4, 5, 6  

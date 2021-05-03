@@ -4,12 +4,12 @@ local _G = _G
 local SetCVar = SetCVar
 local IsAddOnLoaded = IsAddOnLoaded
 
--- LuckyoneUI print
+-- LuckyoneUI chat print
 function L1UI:Print(msg)
-	print('|cff4beb2cLuckyoneUI|r: '..msg)
+	print(L1UI.Name..': '..msg)
 end
 
--- Hide certain Blizzard Frames
+-- Toggle Blizzard Frames
 function L1UI:DisabledFrames()
 
 	if E.private.L1UI.disabledFrames.BossBanner then
@@ -34,7 +34,7 @@ function L1UI:DisabledFrames()
 	end
 end
 
--- AddOnSkins Profile
+-- Load AddOnSkins Profile
 function L1UI:AddonSetupAS()
 
 	if IsAddOnLoaded('AddOnSkins') then
@@ -43,7 +43,7 @@ function L1UI:AddonSetupAS()
 	end
 end
 
--- BigWigs Profile
+-- Load BigWigs Profile
 function L1UI:AddonSetupBW()
 
 	if IsAddOnLoaded('BigWigs') then
@@ -52,7 +52,7 @@ function L1UI:AddonSetupBW()
 	end
 end
 
--- DBM Profile
+-- Load DBM Profile
 function L1UI:AddonSetupDBM()
 
 	if IsAddOnLoaded('DBM-Core') then
@@ -61,7 +61,7 @@ function L1UI:AddonSetupDBM()
 	end
 end
 
--- Details Profile
+-- Load Details Profile
 function L1UI:AddonSetupDT()
 
 	if IsAddOnLoaded('Details') then
@@ -70,7 +70,7 @@ function L1UI:AddonSetupDT()
 	end
 end
 
--- OmniCD Profile
+-- Load OmniCD Profile
 function L1UI:AddonSetupOCD()
 
 	if IsAddOnLoaded('OmniCD') then
@@ -79,7 +79,7 @@ function L1UI:AddonSetupOCD()
 	end
 end
 
--- Plater Profile
+-- Load Plater Profile
 function L1UI:AddonSetupPlater()
 
 	if IsAddOnLoaded('Plater') then
@@ -88,7 +88,7 @@ function L1UI:AddonSetupPlater()
 	end
 end
 
--- ProjectAzilroka Profile
+-- Load ProjectAzilroka Profile
 function L1UI:AddonSetupPA()
 
 	if IsAddOnLoaded('ProjectAzilroka') then
@@ -97,7 +97,7 @@ function L1UI:AddonSetupPA()
 	end
 end
 
--- Shadow&Light Profile
+-- Load Shadow&Light Profile
 function L1UI:AddonSetupSLE()
 
 	if IsAddOnLoaded('ElvUI_SLE') then
@@ -106,10 +106,9 @@ function L1UI:AddonSetupSLE()
 	end
 end
 
--- CVars General
+-- General CVars
 function L1UI:SetupCVars()
 
-	-- ElvUI CVars
 	E:SetupCVars(noDisplayMsg)
 
 	SetCVar('advancedCombatLogging', 1)
@@ -121,10 +120,9 @@ function L1UI:SetupCVars()
 	L1UI:Print('CVars have been set.')
 end
 
--- CVars NamePlates
+-- NamePlate CVars
 function L1UI:NameplateCVars()
 
-	-- NamePlate CVars
 	SetCVar('nameplateLargerScale', 1)
 	SetCVar('nameplateMinAlpha', 1)
 	SetCVar('nameplateMinScale', 1)
@@ -135,41 +133,39 @@ function L1UI:NameplateCVars()
 	SetCVar('nameplateSelectedScale', 1)
 	SetCVar('nameplateSelfAlpha', 1)
 
-	-- Name CVars
 	SetCVar('UnitNameEnemyGuardianName', 1)
 	SetCVar('UnitNameEnemyMinionName', 1)
 	SetCVar('UnitNameEnemyPetName', 1)
 	SetCVar('UnitNameEnemyPlayerName', 1)
 	SetCVar('UnitNameEnemyTotem', 1)
 
-	L1UI:Print('NamePlate CVars have been reset to default.')
+	L1UI:Print('NamePlate CVars have been set.')
 end
 
--- Private DB
+-- E.private
 function L1UI:SetupPrivate()
 
-	-- ElvUI Private DB
 	E.private["general"]["chatBubbleFont"] = "Expressway"
 	E.private["general"]["chatBubbleFontOutline"] = "OUTLINE"
 	E.private["general"]["dmgfont"] = "Expressway"
-	E.private["general"]["glossTex"] = "Solid"
+	E.private["general"]["glossTex"] = "Minimalist"
 	E.private["general"]["namefont"] = "Expressway"
-	E.private["general"]["normTex"] = "Solid"
+	E.private["general"]["normTex"] = "Minimalist"
 	E.private["general"]["totemBar"] = false
-	E.private["install_complete"] = "12.16"
+	E.private["install_complete"] = "12.24"
 	E.private["skins"]["parchmentRemoverEnable"] = true
 end
 
--- Global DB
+-- E.global
 function L1UI:SetupGlobal()
 
-	-- ElvUI Global DB
 	E.global["general"]["commandBarSetting"] = "DISABLED"
+	E.global["general"]["fadeMapWhenMoving"] = false
 	E.global["general"]["mapAlphaWhenMoving"] = 0.35
 	E.global["general"]["smallerWorldMapScale"] = 0.8
 	E.global["general"]["WorldMapCoordinates"]["position"] = "TOPLEFT"
 
-	-- Custom DataText
+	-- Luckyone Custom DataText (below ActionBars)
 	do
 		E.DataTexts:BuildPanelFrame("Luckyone_ActionBars_DT")
 		E.global["datatexts"]["customPanels"]["Luckyone_ActionBars_DT"]["backdrop"] = true
@@ -196,7 +192,7 @@ function L1UI:SetupGlobal()
 	end
 end
 
--- UI Scale
+-- Set UI Scale
 function L1UI:SetupScale()
 
 	E.global["general"]["UIScale"] = 0.71111111111111

@@ -2,7 +2,7 @@ local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
 local _G = _G
 
--- ProjectAzilroka profile setup
+-- ProjectAzilroka Profile
 function L1UI:GetPAProfile()
 
 	local PA = _G.ProjectAzilroka
@@ -10,17 +10,18 @@ function L1UI:GetPAProfile()
 
 	-- Module toggles
 	PA.db["AuraReminder"]["Enable"] = false
-	PA.db["BigButtons"]["Enable"] = false
 	PA.db["Cooldown"]["Enable"] = false
 	PA.db["DragonOverlay"]["Enable"] = false
 	PA.db["EnhancedShadows"]["Enable"] = false
+	PA.db["MasterExperience"]["Enable"] = false
 	PA.db["MouseoverAuras"]["Enable"] = false
 	PA.db["MovableFrames"]["Enable"] = false
 	PA.db["OzCooldowns"]["Enable"] = false
 	PA.db["QuestSounds"]["Enable"] = false
 	PA.db["ReputationReward"]["Enable"] = false
 	PA.db["stAddonManager"]["Enable"] = false
-	PA.db["MasterExperience"]["Enable"] = false
+	--PA.db["SunsongRanchFarmer"]["Enable"] = false
+	PA.db["TorghastBuffs"]["Enable"] = false
 
 	-- SquareMinimapButtons Setup
 	PA.db["SquareMinimapButtons"]["Backdrop"] = false
@@ -37,7 +38,7 @@ function L1UI:GetPAProfile()
 	PA.db["EnhancedFriendsList"]["InfoFontSize"] = 10
 	PA.db["EnhancedFriendsList"]["NameFontSize"] = 11
 	PA.db["EnhancedFriendsList"]["StatusIconPack"] = "Square"
-	PA.db["EnhancedFriendsList"]["Texture"] = "Solid"
+	PA.db["EnhancedFriendsList"]["Texture"] = "Minimalist"
 
 	-- Movers
 	E.db["movers"]["SquareMinimapButtonBarMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-2,-187"

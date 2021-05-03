@@ -2,29 +2,25 @@ local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
 local ReloadUI = ReloadUI
 
--- Option to choose between Dark (Default) and Class color
+-- UnitFrame color themes
 function L1UI:SetupTheme(theme)
 
 	if theme == 'dark' then
 
-		-- Health Backdrop
 		E.db["unitframe"]["colors"]["classbackdrop"] = true
 		E.db["unitframe"]["colors"]["customhealthbackdrop"] = false
 		E.db["unitframe"]["colors"]["healthMultiplier"] = 0.75
 
-		-- Health Color
 		E.db["unitframe"]["colors"]["health"]["b"] = 0.058823529411765
 		E.db["unitframe"]["colors"]["health"]["g"] = 0.058823529411765
 		E.db["unitframe"]["colors"]["health"]["r"] = 0.058823529411765
 		E.db["unitframe"]["colors"]["healthclass"] = false
 
-		-- Misc
 		E.db["unitframe"]["colors"]["transparentHealth"] = true
 		E.db["unitframe"]["colors"]["useDeadBackdrop"] = true
 
 	elseif theme == 'class' then
 
-		-- Health Backdrop
 		E.db["unitframe"]["colors"]["classbackdrop"] = false
 		E.db["unitframe"]["colors"]["customhealthbackdrop"] = true
 		E.db["unitframe"]["colors"]["health_backdrop"]["b"] = 0.10196078431373
@@ -32,10 +28,8 @@ function L1UI:SetupTheme(theme)
 		E.db["unitframe"]["colors"]["health_backdrop"]["r"] = 0.10196078431373
 		E.db["unitframe"]["colors"]["healthMultiplier"] = 0
 
-		-- Health Color
 		E.db["unitframe"]["colors"]["healthclass"] = true
 
-		-- Misc
 		E.db["unitframe"]["colors"]["transparentHealth"] = true
 		E.db["unitframe"]["colors"]["useDeadBackdrop"] = true
 
@@ -46,20 +40,16 @@ function L1UI:SetupTheme(theme)
 	L1UI:Print('Theme has been set.')
 end
 
--- Raidframe Theme
+-- RaidFrame layouts
 function L1UI:RaidFrames(style)
 
-	if not E.db.movers then
-		E.db.movers = {}
-	end
+	if not E.db.movers then E.db.movers = {} end
 
 	if style == 'vertical' then
 
-		-- Growth / Mover
 		E.db["movers"]["ElvUF_RaidMover"] = "TOPLEFT,ElvUIParent,TOPLEFT,1,-76"
 		E.db["unitframe"]["units"]["raid"]["growthDirection"] = "DOWN_RIGHT"
 
-		-- Custom Text
 		E.db["unitframe"]["units"]["raid"]["customTexts"] = E.db["unitframe"]["units"]["raid"]["customTexts"] or {}
 		E.db["unitframe"]["units"]["raid"]["customTexts"]["Luckyone_Name"] = {
 			["attachTextTo"] = "Health",
@@ -73,7 +63,6 @@ function L1UI:RaidFrames(style)
 			["yOffset"] = 0
 		}
 
-		-- Setup
 		E.db["unitframe"]["units"]["raid"]["classbar"]["fill"] = "spaced"
 		E.db["unitframe"]["units"]["raid"]["classbar"]["height"] = 6
 		E.db["unitframe"]["units"]["raid"]["debuffs"]["countFont"] = "Expressway"
@@ -124,11 +113,9 @@ function L1UI:RaidFrames(style)
 	
 	elseif style == 'block' then
 
-		-- Growth / Mover
 		E.db["movers"]["ElvUF_RaidMover"] = "BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,1,173"
 		E.db["unitframe"]["units"]["raid"]["growthDirection"] = "RIGHT_DOWN"
 
-		-- Custom Text
 		E.db["unitframe"]["units"]["raid"]["customTexts"] = E.db["unitframe"]["units"]["raid"]["customTexts"] or {}
 		E.db["unitframe"]["units"]["raid"]["customTexts"]["Luckyone_Name"] = {
 			["attachTextTo"] = "Health",
@@ -142,7 +129,6 @@ function L1UI:RaidFrames(style)
 			["yOffset"] = 0
 		}
 
-		-- Setup
 		E.db["unitframe"]["units"]["raid"]["classbar"]["fill"] = "spaced"
 		E.db["unitframe"]["units"]["raid"]["classbar"]["height"] = 6
 		E.db["unitframe"]["units"]["raid"]["debuffs"]["countFont"] = "Expressway"
@@ -192,4 +178,103 @@ function L1UI:RaidFrames(style)
 	E:StaggeredUpdateAll(nil, true)
 
 	ReloadUI()
+end
+
+-- Switch between LuckyoneUI and ElvUI text formats
+function L1UI:SwapTags(group)
+
+	E.db["unitframe"]["units"]["arena"]["customTexts"] = E.db["unitframe"]["units"]["arena"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["boss"]["customTexts"] = E.db["unitframe"]["units"]["boss"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["focus"]["customTexts"] = E.db["unitframe"]["units"]["focus"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["focustarget"]["customTexts"] = E.db["unitframe"]["units"]["focustarget"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["party"]["customTexts"] = E.db["unitframe"]["units"]["party"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["pet"]["customTexts"] = E.db["unitframe"]["units"]["pet"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["player"]["customTexts"] = E.db["unitframe"]["units"]["player"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["raid"]["customTexts"] = E.db["unitframe"]["units"]["raid"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["target"]["customTexts"] = E.db["unitframe"]["units"]["target"]["customTexts"] or {}
+	E.db["unitframe"]["units"]["targettarget"]["customTexts"] = E.db["unitframe"]["units"]["targettarget"]["customTexts"] or {}
+
+	if group == 'elvui' then
+
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["level"]["format"] = ""
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["name"]["format"] = "[name:last][classificationcolor][ >classification]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["level"]["format"] = ""
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["name"]["format"] = "[name:medium]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["title"]["format"] = "[npctitle]"
+		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["level"]["format"] = "[level]"
+		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["text"]["format"] = "[perhp<%]"
+		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["level"]["format"] = "[level]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:medium]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%] | [health:current:shortvalue]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level][classificationcolor][ >classification]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["focustarget"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%]"
+		E.db["unitframe"]["units"]["focustarget"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["party"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:short]"
+		E.db["unitframe"]["units"]["pet"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%]"
+		E.db["unitframe"]["units"]["pet"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor]Pet"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_HP"]["text_format"] = "[health:current:shortvalue] | [perhp<%]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:veryshort]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["raid"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:short]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%] | [health:current:shortvalue]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level][classificationcolor][ >classification]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["targettarget"]["customTexts"]["Luckyone_HP"]["text_format"] = "[perhp<%]"
+		E.db["unitframe"]["units"]["targettarget"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+
+	elseif group == 'luckyone' then
+
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["health"]["text"]["format"] = "[luckyone:health:percent]"
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["level"]["format"] = ""
+		E.db["nameplates"]["units"]["ENEMY_NPC"]["name"]["format"] = "[name:last][classificationcolor][ >luckyone:classification]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["health"]["text"]["format"] = "[luckyone:health:percent]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["level"]["format"] = ""
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["name"]["format"] = "[name:medium]"
+		E.db["nameplates"]["units"]["ENEMY_PLAYER"]["title"]["format"] = "[npctitle]"
+		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["health"]["text"]["format"] = "[luckyone:health:percent]"
+		E.db["nameplates"]["units"]["FRIENDLY_NPC"]["level"]["format"] = "[level]"
+		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["health"]["text"]["format"] = "[luckyone:health:percent]"
+		E.db["nameplates"]["units"]["FRIENDLY_PLAYER"]["level"]["format"] = "[level]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:medium]"
+		E.db["unitframe"]["units"]["arena"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["boss"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent] | [health:current:shortvalue]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level][classificationcolor][ >luckyone:classification]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["focus"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["focustarget"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent]"
+		E.db["unitframe"]["units"]["focustarget"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["party"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:short][ >luckyone:healermana:percent]"
+		E.db["unitframe"]["units"]["pet"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent]"
+		E.db["unitframe"]["units"]["pet"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor]Pet"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_HP"]["text_format"] = "[health:current:shortvalue] | [luckyone:health:percent]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:veryshort]"
+		E.db["unitframe"]["units"]["player"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["raid"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:short]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent] | [health:current:shortvalue]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Level"]["text_format"] = "[namecolor][level][classificationcolor][ >luckyone:classification]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+		E.db["unitframe"]["units"]["target"]["customTexts"]["Luckyone_Power"]["text_format"] = "[powercolor][perpp<%]"
+		E.db["unitframe"]["units"]["targettarget"]["customTexts"]["Luckyone_HP"]["text_format"] = "[luckyone:health:percent]"
+		E.db["unitframe"]["units"]["targettarget"]["customTexts"]["Luckyone_Name"]["text_format"] = "[namecolor][name:last]"
+
+	end
+
+	E:StaggeredUpdateAll(nil, true)
 end
