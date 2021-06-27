@@ -1,21 +1,55 @@
 local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
-local ReloadUI = ReloadUI
-local IsAddOnLoaded = IsAddOnLoaded
-
 -- Update Layout Buttons (Ingame Config)
-function L1UI:UpdateLayout(layout)
+if L1UI.Retail then
 
-	if not E.db.movers then E.db.movers = {} end
+	function L1UI:UpdateLayout(layout)
 
-	-- Shadow&Light db changes
-	if IsAddOnLoaded('ElvUI_SLE') then L1UI:GetSLEProfile() end
+		-- Protect some rare nil errors
+		if not E.db.movers then E.db.movers = {} end
 
-	if layout == 'dps' then
-		-- DPS/TANK db changes
-	elseif layout == 'healer' then
-		-- Healing db changes
+		-- Updated Shadow & Light for 4.22 screensaver rework and other stuff
+		if IsAddOnLoaded('ElvUI_SLE') then L1UI:GetSLEProfile() end
+
+		if layout == 'dps' then
+			-- DPS/TANK db changes
+		elseif layout == 'healer' then
+			-- Healing db changes
+		end
+
+		E:StaggeredUpdateAll(nil, true)
 	end
 
-	E:StaggeredUpdateAll(nil, true)
+elseif L1UI.TBC then
+
+	function L1UI:UpdateLayout(layout)
+
+		-- Protect some rare nil errors
+		if not E.db.movers then E.db.movers = {} end
+
+		if layout == 'dps' then
+			-- DPS/TANK db changes
+		elseif layout == 'healer' then
+			-- Healing db changes
+		end
+
+		E:StaggeredUpdateAll(nil, true)
+	end
+
+elseif L1UI.Classic then
+
+	function L1UI:UpdateLayout(layout)
+
+		-- Protect some rare nil errors
+		if not E.db.movers then E.db.movers = {} end
+
+		if layout == 'dps' then
+			-- DPS/TANK db changes
+		elseif layout == 'healer' then
+			-- Healing db changes
+		end
+
+		E:StaggeredUpdateAll(nil, true)
+	end
+
 end

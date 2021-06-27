@@ -1,37 +1,11 @@
 local L1UI, E, L, V, P, G = unpack(select(2, ...))
 
-local _G = _G
-local SetCVar = SetCVar
 local IsAddOnLoaded = IsAddOnLoaded
+local SetCVar = SetCVar
 
 -- LuckyoneUI chat print
 function L1UI:Print(msg)
 	print(L1UI.Name..': '..msg)
-end
-
--- Toggle Blizzard Frames
-function L1UI:DisabledFrames()
-
-	if E.private.L1UI.disabledFrames.BossBanner then
-		_G.BossBanner:UnregisterAllEvents()
-	end
-
-	if E.private.L1UI.disabledFrames.LevelUpDisplay then
-		_G.LevelUpDisplay:UnregisterAllEvents()
-	end
-
-	if E.private.L1UI.disabledFrames.ZoneTextFrame then
-		_G.ZoneTextFrame:UnregisterAllEvents()
-	end
-
-	if E.private.L1UI.disabledFrames.AlertFrame then
-		_G.AlertFrame:UnregisterAllEvents()
-		E:DisableMover('AlertFrameMover')
-	end
-
-	if (E.private.L1UI.disabledFrames.BossBanner and E.private.L1UI.disabledFrames.LevelUpDisplay) then
-		E:DisableMover('LevelUpBossBannerMover')
-	end
 end
 
 -- Load AddOnSkins Profile
@@ -106,6 +80,13 @@ function L1UI:AddonSetupSLE()
 	end
 end
 
+-- Set UI Scale
+function L1UI:SetupScale()
+
+	E.global["general"]["UIScale"] = 0.71111111111111
+	SetCVar('uiScale', 0.71111111111111)
+end
+
 -- General CVars
 function L1UI:SetupCVars()
 
@@ -129,7 +110,7 @@ function L1UI:NameplateCVars()
 	SetCVar('nameplateMotion', 1)
 	SetCVar('nameplateOccludedAlphaMult', 1)
 	SetCVar('nameplateOverlapH', 1)
-	SetCVar('nameplateOverlapV', 1.6)
+	SetCVar('nameplateOverlapV', 1.7)
 	SetCVar('nameplateSelectedScale', 1)
 	SetCVar('nameplateSelfAlpha', 1)
 
@@ -137,7 +118,14 @@ function L1UI:NameplateCVars()
 	SetCVar('UnitNameEnemyMinionName', 1)
 	SetCVar('UnitNameEnemyPetName', 1)
 	SetCVar('UnitNameEnemyPlayerName', 1)
-	SetCVar('UnitNameEnemyTotem', 1)
+
+	if not L1UI.Classic then
+		SetCVar('UnitNameEnemyTotem', 1)
+	end
+
+	if not L1UI.Retail then
+		SetCVar('nameplateNotSelectedAlpha', 1)
+	end
 
 	L1UI:Print('NamePlate CVars have been set.')
 end
@@ -151,15 +139,26 @@ function L1UI:SetupPrivate()
 	E.private["general"]["glossTex"] = "Minimalist"
 	E.private["general"]["namefont"] = "Expressway"
 	E.private["general"]["normTex"] = "Minimalist"
-	E.private["general"]["totemBar"] = false
-	E.private["install_complete"] = "12.24"
 	E.private["skins"]["parchmentRemoverEnable"] = true
+
+	if L1UI.Retail then
+		E.private["install_complete"] = "12.24"
+		E.private["general"]["totemBar"] = false
+	elseif L1UI.TBC then
+		E.private["install_complete"] = "2.10"
+		E.private["general"]["totemBar"] = true
+	elseif L1UI.Classic then
+		E.private["install_complete"] = "1.43"
+	end
 end
 
 -- E.global
 function L1UI:SetupGlobal()
 
-	E.global["general"]["commandBarSetting"] = "DISABLED"
+	if L1UI.Retail then
+		E.global["general"]["commandBarSetting"] = "DISABLED"
+	end
+
 	E.global["general"]["fadeMapWhenMoving"] = false
 	E.global["general"]["mapAlphaWhenMoving"] = 0.35
 	E.global["general"]["smallerWorldMapScale"] = 0.8
@@ -190,11 +189,4 @@ function L1UI:SetupGlobal()
 		E.global["datatexts"]["customPanels"]["Luckyone_ActionBars_DT"]["visibility"] = "[petbattle] hide;show"
 		E.global["datatexts"]["customPanels"]["Luckyone_ActionBars_DT"]["width"] = 358
 	end
-end
-
--- Set UI Scale
-function L1UI:SetupScale()
-
-	E.global["general"]["UIScale"] = 0.71111111111111
-	SetCVar('uiScale', 0.71111111111111)
 end

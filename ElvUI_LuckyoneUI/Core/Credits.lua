@@ -18,6 +18,7 @@ local CODING = {
 local TESTERS = {
 	'|cff00FF96AltBridge|r',
 	'|cff69CCF0Sniefer|r',
+	'|cffABD473Badbrain|r',
 	'|cffABD473Xyf|r',
 	'|cffC41F3BKringel|r',
 	'|cffF58CBAIllusion|r',
@@ -41,6 +42,7 @@ local SUPPORT = {
 	'|cffe6cc80ShowNoMercy|r',
 	'|cffe6cc80Treelyté|r',
 	'|cffe6cc80Triplebeamdreams|r',
+	'|cffe6cc80Logan|r',
 }
 
 local function SortList(a, b)

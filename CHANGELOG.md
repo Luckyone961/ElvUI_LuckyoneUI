@@ -1,10 +1,66 @@
-### Version 1.25 [ETA: 🍨]
-**Changes:**  
-Setup Chat will now enable chat class colors  
+### Version 1.30 [ ETA: 🍨 ]
+**All:**  
+Improved installer process for AddOn profiles  
+• It will no longer override/replace existing profiles  
+• Instead it will add my profiles to your profile selection  
+Updated BigWigs profile  
+**Retail:**  
+Fixes for patch 9.1 changes  
+Updated /weekly chat command  
+Updated for ElvUI 12.25 or later  
+Updated for Shadow & Light 4.22 or later  
+Updated OmniCD profile  
 **Misc:**  
-Shadow&Light profile update  
-Initial support for WoW Classic & TBC  
-Initial support for Healing WeakAuras  
+Updated Credits  
+___
+### Version 1.29 [08-06-2021]
+**TBC:**  
+Fixes for NamePlates installer step  
+Updated for ElvUI 2.09  
+___
+### Version 1.28 [31-05-2021]
+**All:**  
+Tooltip transparency 80% -> 75%  
+Updates for the Installer step "Layouts"  
+Updates for the Installer step "BossMods" (DBM)  
+**TBC:**  
+Fixed Details profile for the latest version  
+**TBC & Classic:**  
+Fixed installer for ElvUI 2.08 or later  
+___
+### Version 1.27 [23-05-2021]
+Layout Installer Hotfix (ProjectAzilroka related)  
+___
+### Version 1.26 [23-05-2021]
+**All:**  
+Improved installer process to create a fresh profile  
+instead of overriding the existing one  
+**TBC & Classic:**  
+Fixed SwapTags function  
+Removed overlapping font in Bags/Bank  
+Updated for ElvUI TBC 2.05 or later  
+___
+### Version 1.25 [14-05-2021]
+**Highlights:**  
+Support for WoW TBC & Classic  
+**Profiles:**  
+(TBC & Classic) BigWigs profile added  
+(TBC & Classic) Details profile added  
+(TBC & Classic) Plater profile added  
+(TBC & Classic) DBM profile added  
+(Retail) Shadow & Light profile updated  
+(Retail) BigWigs profile updated  
+(Retail) Details profile updated  
+(Retail) DBM profile updated  
+**Changes:**  
+(All) Setup Chat will now enable chat class colors  
+(All) ElvUI NamePlate castbars will show time remaining instead of current  
+**New Additions:**  
+(All) Chat Commands  
+• /luckyoneui config  
+• /luckyoneui install  
+**Misc:**  
+Updated Credits  
 ___
 ### Version 1.24 [24-04-2021]
 **Hotfix:**  

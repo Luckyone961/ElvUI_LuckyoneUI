@@ -5,7 +5,7 @@ local addon, Engine = ...
 local _G = _G
 
 -- Ace
-local L1UI = E:NewModule(addon, 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0');
+local L1UI = E:NewModule(addon, 'AceConsole-3.0', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0');
 
 Engine[1] = L1UI -- LuckyoneUI
 Engine[2] = E -- ElvUI Engine
@@ -21,10 +21,12 @@ L1UI.CreditsList = {}
 L1UI.Name = '|cff4beb2cLuckyoneUI|r'
 L1UI.Version = GetAddOnMetadata(addon, 'Version')
 
+-- Check WoW Project ID
 L1UI.Retail = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
 L1UI.Classic = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
 L1UI.TBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 
+-- Add Libs from ElvUI_LuckyoneUI\Libraries
 L1UI.Libs = {
 	ACH = LibStub('LibAceConfigHelper'),
 }
@@ -38,7 +40,7 @@ end
 -- Init
 function L1UI:Initialize()
 	if E.private.install_complete and E.private.L1UI.install_version == nil then
-		E:GetModule('PluginInstaller'):Queue(L1UI.InstallerData)
+		E.PluginInstaller:Queue(L1UI.InstallerData)
 	end
 
 	EP:RegisterPlugin(addon, L1UI.GetOptions)

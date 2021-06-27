@@ -6,22 +6,33 @@ local _G = _G
 function L1UI:GetPAProfile()
 
 	local PA = _G.ProjectAzilroka
-	PA.data:SetProfile('Luckyone')
+
+	-- ProjectAzilroka version
+	local version = GetAddOnMetadata('ProjectAzilroka', 'Version')
+
+	-- Create and set a new Profile called Luckyone
+	PA.data:SetProfile("Luckyone")
 
 	-- Module toggles
 	PA.db["AuraReminder"]["Enable"] = false
 	PA.db["Cooldown"]["Enable"] = false
 	PA.db["DragonOverlay"]["Enable"] = false
 	PA.db["EnhancedShadows"]["Enable"] = false
-	PA.db["MasterExperience"]["Enable"] = false
 	PA.db["MouseoverAuras"]["Enable"] = false
 	PA.db["MovableFrames"]["Enable"] = false
 	PA.db["OzCooldowns"]["Enable"] = false
 	PA.db["QuestSounds"]["Enable"] = false
-	PA.db["ReputationReward"]["Enable"] = false
 	PA.db["stAddonManager"]["Enable"] = false
-	--PA.db["SunsongRanchFarmer"]["Enable"] = false
-	PA.db["TorghastBuffs"]["Enable"] = false
+
+	if L1UI.Retail then
+		PA.db["MasterExperience"]["Enable"] = false
+		PA.db["ReputationReward"]["Enable"] = false
+		PA.db["TorghastBuffs"]["Enable"] = false
+
+		if version >= '1.77' then
+			PA.db["SunsongRanchFarmer"]["Enable"] = false
+		end
+	end
 
 	-- SquareMinimapButtons Setup
 	PA.db["SquareMinimapButtons"]["Backdrop"] = false
